@@ -42,7 +42,7 @@ export default function Page () {
     const onSubmit = async (data) => {
         setLoading(true)
         try {
-            const response = await fetch('http://localhost:3001/api/auth/register', {method: "POST", body: JSON.stringify(data)})
+            const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/auth/register', {method: "POST", body: JSON.stringify(data)})
             const result = await response.json()
             router.push('/')
             onClose()

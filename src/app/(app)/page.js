@@ -18,7 +18,7 @@ export default function Page () {
     const getTokens = async () => {
         setLoading(true)    
         try {
-            const response = await fetch('http://localhost:3001/api/tokens')
+            const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/tokens', {next: {cache: 'no-cache'}})
             const result = await response.json()
             setTokens(result.result)
         } catch (e) {
@@ -31,7 +31,7 @@ export default function Page () {
     const createBookmark = async (data) => {
         setBookmarkLoading(true)
         try {
-            const response = await fetch('http://localhost:3001/api/bookmarks', {method: 'POST', body: JSON.stringify(data)})
+            const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/bookmarks', {method: 'POST', body: JSON.stringify(data)})
             const result = await response.json()
             return result        
         } catch (error) {
