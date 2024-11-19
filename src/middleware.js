@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const protectedPaths = ['/profile', '/bookmark', '/search'];
+const protectedPaths = ['/profile', '/bookmarks', '/search'];
 
 export function middleware(req) {
   const { pathname, origin } = req.nextUrl;
@@ -22,5 +22,5 @@ export function middleware(req) {
 
 // Specify the paths that should trigger this middleware
 export const config = {
-  matcher: ['/profile/:path*', '/bookmark/:path*', '/search/:path*'],
+  matcher: ['/profile/:path*', '/bookmarks/:path*', '/search/:path*'],
 };

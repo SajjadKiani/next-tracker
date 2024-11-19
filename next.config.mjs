@@ -3,7 +3,7 @@ import withPWAInit from 'next-pwa'
 
 const withPWA = withPWAInit({
   dest: 'public',
-  register: false,
+  register: true,
   skipWaiting: true,
   // any other next-pwa options you may have
 });
