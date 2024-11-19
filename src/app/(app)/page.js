@@ -1,3 +1,4 @@
+"use client"
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -5,24 +6,49 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Bookmark, MoveRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense, useEffect, useState } from "react";
+import Loading from "@/components/common/loding";
 
-const getTokens = async () => {
-    try {
-        const response = await fetch('http://localhost:3000/api/tokens')
-        const result = await response.json()
-        return result
-    } catch (e) {
-        console.log(e);
+export default function Page () {
+
+    const [tokens, setTokens] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [bookmarkLoading, setBookmarkLoading] = useState(false)
+
+    const getTokens = async () => {
+        setLoading(true)    
+        try {
+            const response = await fetch('http://localhost:3001/api/tokens')
+            const result = await response.json()
+            setTokens(result.result)
+        } catch (e) {
+            console.log(e);
+        } finally {
+            setLoading(false)
+        }
     }
-}
 
-export default async function Page () {
+    const createBookmark = async (data) => {
+        setBookmarkLoading(true)
+        try {
+            const response = await fetch('http://localhost:3001/api/bookmarks', {method: 'POST', body: JSON.stringify(data)})
+            const result = await response.json()
+            return result        
+        } catch (error) {
+            console.log(err);
+        } finally {
+            setBookmarkLoading(false)
+        }
+    }
+        
 
-    const tokens = await getTokens()
+    useEffect(() => {
+        getTokens()
+    }, [])
 
     return (
         <div className="h-full flex flex-col gap-3">
-            {tokens.result.map((token, index) => 
+            {tokens.map((token, index) => 
                 <Card key={index}>
                     <CardContent className='flex flex-col gap-2 px-3 py-2'>
                         <Image
@@ -56,9 +82,17 @@ export default async function Page () {
                             )}
                         </div>
                         <div className="flex justify-end gap-2">
-                            <Button variant='outline'>
-                                <Bookmark />
-                            </Button>
+                            {!bookmarkLoading ?
+                                <Button variant='outline'
+                                    onClick={() => createBookmark({price: 0,contract: token.tokenAddress})}
+                                >
+                                    <Bookmark />
+                                </Button>
+                                :
+                                <Button variant='outline'>
+                                    <Loading />
+                                </Button>
+                            }   
                             <Button asChild>
                                 <Link href={'detail/' + token.tokenAddress}>
                                     <MoveRight className="" />

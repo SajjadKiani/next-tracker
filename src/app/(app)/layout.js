@@ -1,6 +1,6 @@
 
 
-export default function Layout ({children}) {
+export default function Layout ({children, modal}) {
     
     return (
         <div className="flex justify-center">
@@ -19,6 +19,7 @@ export default function Layout ({children}) {
                     </p>
                 </footer>
             </div>
+            {modal}
         </div>
     )
 }
