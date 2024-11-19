@@ -10,6 +10,7 @@ import { Separator } from '@/components/ui/separator';
 import { Bookmark, ExternalLinkIcon } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import {ArrowUp, ArrowDown} from 'lucide-react'
 
 export default function Page () {
     const router = useRouter();

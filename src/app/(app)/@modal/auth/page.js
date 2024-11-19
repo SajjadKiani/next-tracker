@@ -94,7 +94,7 @@ export default function Page () {
                                     )}
                                 />
                                 <p className="text-xs font-light text-gray-500">
-                                    have'nt account? <Link href='/auth/register' className="font-bold">sign up</Link>
+                                    have&apos;nt account? <Link href='/auth/register' className="font-bold">sign up</Link>
                                 </p>
                                 <Button className='w-full' type="submit">Submit</Button>
                             </form>

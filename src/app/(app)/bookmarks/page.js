@@ -11,6 +11,7 @@ import { BookMarked } from "lucide-react"
 import moment from "moment"
 import { ExternalLinkIcon } from "lucide-react"
 import Image from "next/image"
+import {ArrowUp, ArrowDown} from 'lucide-react'
 
 export default function Page () {
     const [bookmarks, setBookmarks] = useState([])
