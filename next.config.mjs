@@ -20,7 +20,10 @@ const nextConfig = withPWA({
                 hostname: 'dd.dexscreener.com'
             }
         ]
-    }
+    },
+    experimental: {
+        missingSuspenseWithCSRBailout: false,
+    },
 });
 
 export default nextConfig;
