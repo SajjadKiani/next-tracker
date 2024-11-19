@@ -21,7 +21,7 @@ export default function Page () {
         setLoading(true);
       
         try {
-          const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/bookmarks');
+          const response = await fetch('/api/bookmarks');
           const result = await response.json();
       
           if (Array.isArray(result.bookmarks)) {
@@ -45,7 +45,7 @@ export default function Page () {
     const fetchSearchResults = async (query) => {
         try {
           // Fetch search results for the given query
-          const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL + `/api/tokens/${query}`);
+          const response = await fetch(`/api/tokens/${query}`);
           const data = await response.json();
       
           // Assuming results is an array of all search results

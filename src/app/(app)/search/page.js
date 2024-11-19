@@ -39,7 +39,7 @@ export default function Page () {
     const fetchSearchResults = async () => {
         setIsLoading(true);
         try {
-          const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL + `/api/tokens/${query}`);
+          const response = await fetch(`/api/tokens/${query}`);
           const data = await response.json();
           setResults(data.result || []);
         } catch (error) {
@@ -74,7 +74,7 @@ export default function Page () {
 
       const createBookmark = async (data) => {
         try {
-            const response = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/bookmarks', {method: 'POST', body: JSON.stringify(data)})
+            const response = await fetch('/api/bookmarks', {method: 'POST', body: JSON.stringify(data)})
             const result = await response.json()
             return result        
         } catch (error) {
