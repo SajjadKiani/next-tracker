@@ -3,7 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Bookmark, MoveRight } from "lucide-react";
+import { Bookmark, MoveRight, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense, useEffect, useState } from "react";
@@ -94,8 +94,8 @@ export default function Page () {
                                 </Button>
                             }   
                             <Button asChild>
-                                <Link href={'detail/' + token.tokenAddress}>
-                                    <MoveRight className="" />
+                                <Link href={'search/?q=' + token.tokenAddress}>
+                                    <Search className="" />
                                 </Link>
                             </Button>
                         </div>

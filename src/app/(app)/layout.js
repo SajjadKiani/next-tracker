@@ -1,3 +1,4 @@
+import Navbar from "@/components/layout/navbar";
 
 
 export default function Layout ({children, modal}) {
@@ -14,9 +15,7 @@ export default function Layout ({children, modal}) {
                     {children}
                 </main>
                 <footer className="pb-3">
-                    <p>
-                        footer
-                    </p>
+                    <Navbar />
                 </footer>
             </div>
             {modal}
