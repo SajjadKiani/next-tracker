@@ -37,7 +37,7 @@ export async function POST(req, res) {
     // Parse the request body
     const { price, contract } = await req.json();
 
-    if (!price || !contract) {
+    if (!contract) {
       return NextResponse.json({ error: 'Price and contract are required' }, {status: 400});
     }
 
