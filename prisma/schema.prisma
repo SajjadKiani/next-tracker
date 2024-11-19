@@ -1,0 +1,28 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int        @id @default(autoincrement())
+  createdAt  DateTime   @default(now())
+  username   String     @unique
+  token      String     @unique 
+  bookmarks  Bookmark[] // Relation field for bookmarks
+
+}
+
+model Bookmark {
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  price      Float
+  contract   String
+  userId     Int
+  user       User     @relation(fields: [userId], references: [id])
+
+}
